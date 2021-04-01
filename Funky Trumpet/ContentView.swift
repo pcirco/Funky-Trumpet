@@ -15,6 +15,7 @@ struct ContentView: View {
     @State var dragValve1 = false
     @State var dragValve2 = false
     @State var dragValve3 = false
+    @State var valveCombo:UInt8 = 0
     var body: some View {
         Text("Funky Trumpet")
             .padding()
@@ -37,13 +38,13 @@ struct ContentView: View {
                             .onChanged({
                                 value in
                                 if dragBegun == false {
-                                    trumpet?.instrument.startNote(82, withVelocity: 127, onChannel: 0)
+                                    trumpet?.instrument.startNote(82 - valveCombo, withVelocity: 127, onChannel: 0)
                                     dragBegun.toggle()
                                 }
                             })
                             .onEnded({
                                 value in
-                                trumpet?.instrument.stopNote(82, onChannel: 0)
+                                trumpet?.instrument.stopNote(82 - valveCombo, onChannel: 0)
                                 dragBegun.toggle()
                             }))
                 Rectangle()
@@ -53,13 +54,13 @@ struct ContentView: View {
                             .onChanged({
                                 value in
                                 if dragBegun == false {
-                                    trumpet?.instrument.startNote(77, withVelocity: 127, onChannel: 0)
+                                    trumpet?.instrument.startNote(77 - valveCombo, withVelocity: 127, onChannel: 0)
                                     dragBegun.toggle()
                                 }
                             })
                             .onEnded({
                                 value in
-                                trumpet?.instrument.stopNote(77, onChannel: 0)
+                                trumpet?.instrument.stopNote(77 - valveCombo, onChannel: 0)
                                 dragBegun.toggle()
                             }))
                 Rectangle()
@@ -69,13 +70,13 @@ struct ContentView: View {
                             .onChanged({
                                 value in
                                 if dragBegun == false {
-                                    trumpet?.instrument.startNote(74, withVelocity: 127, onChannel: 0)
+                                    trumpet?.instrument.startNote(74 - valveCombo, withVelocity: 127, onChannel: 0)
                                     dragBegun.toggle()
                                 }
                             })
                             .onEnded({
                                 value in
-                                trumpet?.instrument.stopNote(74, onChannel: 0)
+                                trumpet?.instrument.stopNote(74 - valveCombo, onChannel: 0)
                                 dragBegun.toggle()
                             }))
                 Rectangle()
@@ -85,13 +86,13 @@ struct ContentView: View {
                             .onChanged({
                                 value in
                                 if dragBegun == false {
-                                    trumpet?.instrument.startNote(70, withVelocity: 127, onChannel: 0)
+                                    trumpet?.instrument.startNote(70 - valveCombo, withVelocity: 127, onChannel: 0)
                                     dragBegun.toggle()
                                 }
                             })
                             .onEnded({
                                 value in
-                                trumpet?.instrument.stopNote(70, onChannel: 0)
+                                trumpet?.instrument.stopNote(70 - valveCombo, onChannel: 0)
                                 dragBegun.toggle()
                             }))
                 Rectangle()
@@ -101,13 +102,13 @@ struct ContentView: View {
                             .onChanged({
                                 value in
                                 if dragBegun == false {
-                                    trumpet?.instrument.startNote(65, withVelocity: 127, onChannel: 0)
+                                    trumpet?.instrument.startNote(65 - valveCombo, withVelocity: 127, onChannel: 0)
                                     dragBegun.toggle()
                                 }
                             })
                             .onEnded({
                                 value in
-                                trumpet?.instrument.stopNote(65, onChannel: 0)
+                                trumpet?.instrument.stopNote(65 - valveCombo, onChannel: 0)
                                 dragBegun.toggle()
                             }))
                 Rectangle()
@@ -117,34 +118,75 @@ struct ContentView: View {
                             .onChanged({
                                 value in
                                 if dragBegun == false {
-                                    trumpet?.instrument.startNote(58, withVelocity: 127, onChannel: 0)
+                                    trumpet?.instrument.startNote(58 - valveCombo, withVelocity: 127, onChannel: 0)
                                     dragBegun.toggle()
                                 }
                             })
                             .onEnded({
                                 value in
-                                trumpet?.instrument.stopNote(58, onChannel: 0)
+                                trumpet?.instrument.stopNote(58 - valveCombo, onChannel: 0)
                                 dragBegun.toggle()
                             }))
             }
-        }
             
             HStack{
-                Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
-                    Text("Valve 1").padding()
-                }
-                Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
-                    Text("Valve 2").padding()
-                }
-                Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
-                    Text("Valve 3").padding()
-                }
+                Circle()
+                    .fill(Color.orange)
+                    .overlay(Text("Valve 1"))
+                    .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global)
+                                .onChanged({
+                                    value in
+                                    if dragValve1 == false {
+                                        valveCombo += 2
+                                        dragValve1.toggle()
+                                    }
+                                })
+                                .onEnded({
+                                    value in
+                                    valveCombo -= 2
+                                    dragValve1.toggle()
+                                }))
+                Circle()
+                    .fill(Color.orange)
+                    .overlay(Text("Valve 2"))
+                    .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global)
+                                .onChanged({
+                                    value in
+                                    if dragValve2 == false {
+                                        valveCombo += 1
+                                        dragValve2.toggle()
+                                    }
+                                })
+                                .onEnded({
+                                    value in
+                                    valveCombo -= 1
+                                    dragValve2.toggle()
+                                }))
+                Circle()
+                    .fill(Color.orange)
+                    .overlay(Text("Valve 3"))
+                    .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global)
+                                .onChanged({
+                                    value in
+                                    if dragValve3 == false {
+                                        valveCombo += 3
+                                        dragValve3.toggle()
+                                    }
+                                })
+                                .onEnded({
+                                    value in
+                                    valveCombo -= 3
+                                    dragValve3.toggle()
+                                }))
+                
+                
             }
             
         }
         
         
     }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
