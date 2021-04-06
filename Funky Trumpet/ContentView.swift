@@ -16,6 +16,7 @@ struct ContentView: View {
     @State var dragValve2 = false
     @State var dragValve3 = false
     @State var valveCombo:UInt8 = 0
+    @State var oldCombo:UInt8 = 0
     var body: some View {
         Text("Funky Trumpet")
             .padding()
@@ -121,6 +122,11 @@ struct ContentView: View {
                                     trumpet?.instrument.startNote(58 - valveCombo, withVelocity: 127, onChannel: 0)
                                     dragBegun.toggle()
                                 }
+                                if oldCombo != valveCombo {
+                                    trumpet?.instrument.stopNote(58 - oldCombo, onChannel: 0)
+                                    trumpet?.instrument.startNote(58 - valveCombo, withVelocity: 127, onChannel: 0)
+                                    oldCombo = valveCombo
+                                }
                             })
                             .onEnded({
                                 value in
@@ -137,14 +143,17 @@ struct ContentView: View {
                                 .onChanged({
                                     value in
                                     if dragValve1 == false {
+                                        oldCombo = valveCombo
                                         valveCombo += 2
                                         dragValve1.toggle()
+                                        print("oldCombo = ",  oldCombo,  ", valveCombo = ",  valveCombo)
                                     }
                                 })
                                 .onEnded({
                                     value in
                                     valveCombo -= 2
                                     dragValve1.toggle()
+                                    print("oldCombo = ",  oldCombo,  ", valveCombo = ",  valveCombo)
                                 }))
                 Circle()
                     .fill(Color.orange)
@@ -153,14 +162,17 @@ struct ContentView: View {
                                 .onChanged({
                                     value in
                                     if dragValve2 == false {
+                                        oldCombo = valveCombo
                                         valveCombo += 1
                                         dragValve2.toggle()
+                                        print("oldCombo = ",  oldCombo,  ", valveCombo = ",  valveCombo)
                                     }
                                 })
                                 .onEnded({
                                     value in
                                     valveCombo -= 1
                                     dragValve2.toggle()
+                                    print("oldCombo = ",  oldCombo,  ", valveCombo = ",  valveCombo)
                                 }))
                 Circle()
                     .fill(Color.orange)
@@ -169,14 +181,17 @@ struct ContentView: View {
                                 .onChanged({
                                     value in
                                     if dragValve3 == false {
+                                        oldCombo = valveCombo
                                         valveCombo += 3
                                         dragValve3.toggle()
+                                        print("oldCombo = ",  oldCombo,  ", valveCombo = ",  valveCombo)
                                     }
                                 })
                                 .onEnded({
                                     value in
                                     valveCombo -= 3
                                     dragValve3.toggle()
+                                    print("oldCombo = ",  oldCombo,  ", valveCombo = ",  valveCombo)
                                 }))
                 
                 
