@@ -39,8 +39,14 @@ struct ContentView: View {
                             .onChanged({
                                 value in
                                 if dragBegun == false {
+                                    oldCombo = valveCombo
                                     trumpet?.instrument.startNote(82 - valveCombo, withVelocity: 127, onChannel: 0)
                                     dragBegun.toggle()
+                                }
+                                if oldCombo != valveCombo {
+                                    trumpet?.instrument.stopNote(82 - oldCombo, onChannel: 0)
+                                    trumpet?.instrument.startNote(82 - valveCombo, withVelocity: 127, onChannel: 0)
+                                    oldCombo = valveCombo
                                 }
                             })
                             .onEnded({
@@ -55,8 +61,14 @@ struct ContentView: View {
                             .onChanged({
                                 value in
                                 if dragBegun == false {
+                                    oldCombo = valveCombo
                                     trumpet?.instrument.startNote(77 - valveCombo, withVelocity: 127, onChannel: 0)
                                     dragBegun.toggle()
+                                }
+                                if oldCombo != valveCombo {
+                                    trumpet?.instrument.stopNote(77 - oldCombo, onChannel: 0)
+                                    trumpet?.instrument.startNote(77 - valveCombo, withVelocity: 127, onChannel: 0)
+                                    oldCombo = valveCombo
                                 }
                             })
                             .onEnded({
@@ -71,8 +83,15 @@ struct ContentView: View {
                             .onChanged({
                                 value in
                                 if dragBegun == false {
+                                    oldCombo = valveCombo
                                     trumpet?.instrument.startNote(74 - valveCombo, withVelocity: 127, onChannel: 0)
                                     dragBegun.toggle()
+                                    
+                                }
+                                if oldCombo != valveCombo {
+                                    trumpet?.instrument.stopNote(74 - oldCombo, onChannel: 0)
+                                    trumpet?.instrument.startNote(74 - valveCombo, withVelocity: 127, onChannel: 0)
+                                    oldCombo = valveCombo
                                 }
                             })
                             .onEnded({
@@ -87,8 +106,14 @@ struct ContentView: View {
                             .onChanged({
                                 value in
                                 if dragBegun == false {
+                                    oldCombo = valveCombo
                                     trumpet?.instrument.startNote(70 - valveCombo, withVelocity: 127, onChannel: 0)
                                     dragBegun.toggle()
+                                }
+                                if oldCombo != valveCombo {
+                                    trumpet?.instrument.stopNote(70 - oldCombo, onChannel: 0)
+                                    trumpet?.instrument.startNote(70 - valveCombo, withVelocity: 127, onChannel: 0)
+                                    oldCombo = valveCombo
                                 }
                             })
                             .onEnded({
@@ -103,8 +128,14 @@ struct ContentView: View {
                             .onChanged({
                                 value in
                                 if dragBegun == false {
+                                    oldCombo = valveCombo
                                     trumpet?.instrument.startNote(65 - valveCombo, withVelocity: 127, onChannel: 0)
                                     dragBegun.toggle()
+                                }
+                                if oldCombo != valveCombo {
+                                    trumpet?.instrument.stopNote(65 - oldCombo, onChannel: 0)
+                                    trumpet?.instrument.startNote(65 - valveCombo, withVelocity: 127, onChannel: 0)
+                                    oldCombo = valveCombo
                                 }
                             })
                             .onEnded({
@@ -119,6 +150,7 @@ struct ContentView: View {
                             .onChanged({
                                 value in
                                 if dragBegun == false {
+                                    oldCombo = valveCombo
                                     trumpet?.instrument.startNote(58 - valveCombo, withVelocity: 127, onChannel: 0)
                                     dragBegun.toggle()
                                 }
@@ -143,17 +175,14 @@ struct ContentView: View {
                                 .onChanged({
                                     value in
                                     if dragValve1 == false {
-                                        oldCombo = valveCombo
                                         valveCombo += 2
-                                        dragValve1.toggle()
-                                        print("oldCombo = ",  oldCombo,  ", valveCombo = ",  valveCombo)
+                                        dragValve1 = true
                                     }
                                 })
                                 .onEnded({
                                     value in
                                     valveCombo -= 2
-                                    dragValve1.toggle()
-                                    print("oldCombo = ",  oldCombo,  ", valveCombo = ",  valveCombo)
+                                    dragValve1 = false
                                 }))
                 Circle()
                     .fill(Color.orange)
@@ -162,17 +191,14 @@ struct ContentView: View {
                                 .onChanged({
                                     value in
                                     if dragValve2 == false {
-                                        oldCombo = valveCombo
                                         valveCombo += 1
                                         dragValve2.toggle()
-                                        print("oldCombo = ",  oldCombo,  ", valveCombo = ",  valveCombo)
                                     }
                                 })
                                 .onEnded({
                                     value in
                                     valveCombo -= 1
                                     dragValve2.toggle()
-                                    print("oldCombo = ",  oldCombo,  ", valveCombo = ",  valveCombo)
                                 }))
                 Circle()
                     .fill(Color.orange)
@@ -181,17 +207,14 @@ struct ContentView: View {
                                 .onChanged({
                                     value in
                                     if dragValve3 == false {
-                                        oldCombo = valveCombo
                                         valveCombo += 3
                                         dragValve3.toggle()
-                                        print("oldCombo = ",  oldCombo,  ", valveCombo = ",  valveCombo)
                                     }
                                 })
                                 .onEnded({
                                     value in
                                     valveCombo -= 3
                                     dragValve3.toggle()
-                                    print("oldCombo = ",  oldCombo,  ", valveCombo = ",  valveCombo)
                                 }))
                 
                 
@@ -199,8 +222,8 @@ struct ContentView: View {
             
         }
         
-        
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
