@@ -13,6 +13,7 @@
 		DC0D4ACD26139C6C00147DC8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC0D4ACC26139C6C00147DC8 /* Preview Assets.xcassets */; };
 		DC0D4AD626139DAD00147DC8 /* MUSC291Q_MIDISynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0D4AD526139DAC00147DC8 /* MUSC291Q_MIDISynthesizer.swift */; };
 		DC0D4AD926139DB400147DC8 /* gs_instruments.dls in Resources */ = {isa = PBXBuildFile; fileRef = DC0D4AD826139DB400147DC8 /* gs_instruments.dls */; };
+		DCD805172625F6770047EDAD /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = DCD805162625F6770047EDAD /* back.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		DC0D4ACE26139C6C00147DC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC0D4AD526139DAC00147DC8 /* MUSC291Q_MIDISynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUSC291Q_MIDISynthesizer.swift; sourceTree = "<group>"; };
 		DC0D4AD826139DB400147DC8 /* gs_instruments.dls */ = {isa = PBXFileReference; lastKnownFileType = file; path = gs_instruments.dls; sourceTree = "<group>"; };
+		DCD805162625F6770047EDAD /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				DC0D4AD826139DB400147DC8 /* gs_instruments.dls */,
 				DC0D4AD526139DAC00147DC8 /* MUSC291Q_MIDISynthesizer.swift */,
 				DC0D4AC926139C6C00147DC8 /* Assets.xcassets */,
+				DCD805162625F6770047EDAD /* back.png */,
 				DC0D4ACE26139C6C00147DC8 /* Info.plist */,
 				DC0D4ACB26139C6C00147DC8 /* Preview Content */,
 			);
@@ -132,6 +135,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCD805172625F6770047EDAD /* back.png in Resources */,
 				DC0D4ACD26139C6C00147DC8 /* Preview Assets.xcassets in Resources */,
 				DC0D4AD926139DB400147DC8 /* gs_instruments.dls in Resources */,
 				DC0D4ACA26139C6C00147DC8 /* Assets.xcassets in Resources */,
